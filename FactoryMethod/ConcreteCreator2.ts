@@ -1,0 +1,10 @@
+import ConcreteProduct2 from "./ConcreteProduct2";
+import Creator from "./Creator";
+import Product from "./Product";
+
+export default class ConcreteCreator2 extends Creator {
+    public factoryMethod(): Product {
+        return new ConcreteProduct2();
+    }
+    
+}
