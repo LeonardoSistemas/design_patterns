@@ -7,6 +7,9 @@ import ConcreteBuilder from "./Criacionais/Builder/ConcreteBuilder1";
 import Prototype from "./Criacionais/Prototype/Prototype";
 import ComponetWithBackReference from "./Criacionais/Prototype/ComponentWithBackReference";
 import Singleton from "./Criacionais/Singleton/Singleton";
+import Target from "./Estruturais/Adapter/Target";
+import Adaptee from "./Estruturais/Adapter/Adaptee";
+import Adapter from "./Estruturais/Adapter/Adapter";
 
 function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
@@ -68,11 +71,15 @@ function clientSingleton() {
     const s1 = Singleton.getInstance();
     const s2 = Singleton.getInstance();
 
-    if(s1 === s2){
+    if (s1 === s2) {
         console.log('Singleton works, both variables contain the same instance.');
     } else {
         console.log('Singleton failed, variables contain different instances.');
     }
+}
+
+function clientAdapter(target: Target) {
+    console.log(target.request());
 }
 
 clientCode(new ConcreteCreator1());
@@ -80,3 +87,5 @@ clientAbstractFactory(new ConcreteFactory1());
 clientBuilder(new Director);
 clientPrototype();
 clientSingleton();
+clientAdapter(new Target);
+clientAdapter(new Adapter(new Adaptee));
