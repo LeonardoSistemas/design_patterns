@@ -1,12 +1,12 @@
-import ConcreteCreator1 from "./FactoryMethod/ConcreteCreator1";
-import Creator from "./FactoryMethod/Creator";
-import AbstractFactory from "./AbstractFactory/AbstractFactory";
-import ConcreteFactory1 from "./AbstractFactory/ConcreteFactory1";
-import Director from "./Builder/Director";
-import ConcreteBuilder from "./Builder/ConcreteBuilder1";
-import Prototype from "./Prototype/Prototype";
-import ComponetWithBackReference from "./Prototype/ComponentWithBackReference";
-import Singleton from "./Singleton/Singleton";
+import ConcreteCreator1 from "./Criacionais/FactoryMethod/ConcreteCreator1";
+import Creator from "./Criacionais/FactoryMethod/Creator";
+import AbstractFactory from "./Criacionais/AbstractFactory/AbstractFactory";
+import ConcreteFactory1 from "./Criacionais/AbstractFactory/ConcreteFactory1";
+import Director from "./Criacionais/Builder/Director";
+import ConcreteBuilder from "./Criacionais/Builder/ConcreteBuilder1";
+import Prototype from "./Criacionais/Prototype/Prototype";
+import ComponetWithBackReference from "./Criacionais/Prototype/ComponentWithBackReference";
+import Singleton from "./Criacionais/Singleton/Singleton";
 
 function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
