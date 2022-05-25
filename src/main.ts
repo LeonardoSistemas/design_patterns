@@ -6,6 +6,7 @@ import Director from "./Builder/Director";
 import ConcreteBuilder from "./Builder/ConcreteBuilder1";
 import Prototype from "./Prototype/Prototype";
 import ComponetWithBackReference from "./Prototype/ComponentWithBackReference";
+import Singleton from "./Singleton/Singleton";
 
 function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
@@ -63,7 +64,19 @@ function clientPrototype() {
 
 }
 
+function clientSingleton() {
+    const s1 = Singleton.getInstance();
+    const s2 = Singleton.getInstance();
+
+    if(s1 === s2){
+        console.log('Singleton works, both variables contain the same instance.');
+    } else {
+        console.log('Singleton failed, variables contain different instances.');
+    }
+}
+
 clientCode(new ConcreteCreator1());
 clientAbstractFactory(new ConcreteFactory1());
 clientBuilder(new Director);
 clientPrototype();
+clientSingleton();
