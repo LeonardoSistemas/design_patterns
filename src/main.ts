@@ -10,6 +10,8 @@ import Singleton from "./Criacionais/Singleton/Singleton";
 import Target from "./Estruturais/Adapter/Target";
 import Adaptee from "./Estruturais/Adapter/Adaptee";
 import Adapter from "./Estruturais/Adapter/Adapter";
+import Abstraction from "./Estruturais/Bridge/Abstraction";
+import ConcreteImplementationA from "./Estruturais/Bridge/ConcreteImplementationA";
 
 function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
@@ -82,6 +84,10 @@ function clientAdapter(target: Target) {
     console.log(target.request());
 }
 
+function clienteBridge(abstraction: Abstraction) {
+    console.log(abstraction.operation());
+}
+
 clientCode(new ConcreteCreator1());
 clientAbstractFactory(new ConcreteFactory1());
 clientBuilder(new Director);
@@ -89,3 +95,4 @@ clientPrototype();
 clientSingleton();
 clientAdapter(new Target);
 clientAdapter(new Adapter(new Adaptee));
+clienteBridge(new Abstraction(new ConcreteImplementationA()));
