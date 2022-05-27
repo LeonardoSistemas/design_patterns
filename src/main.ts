@@ -12,6 +12,9 @@ import Adaptee from "./Estruturais/Adapter/Adaptee";
 import Adapter from "./Estruturais/Adapter/Adapter";
 import Abstraction from "./Estruturais/Bridge/Abstraction";
 import ConcreteImplementationA from "./Estruturais/Bridge/ConcreteImplementationA";
+import Component from "./Estruturais/Composite/Component";
+import Leaf from "./Estruturais/Composite/Leaf";
+import Composite from "./Estruturais/Composite/Composite";
 
 function clientCode(creator: Creator) {
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
@@ -88,6 +91,23 @@ function clienteBridge(abstraction: Abstraction) {
     console.log(abstraction.operation());
 }
 
+function clientComposite(component: Component) {
+    console.log(`RESULT: ${component.operation()}`);
+}
+
+function clientCompositeBranch() {
+    const tree = new Composite();
+    const branch1 = new Composite();
+    branch1.add(new Leaf());
+    branch1.add(new Leaf());
+    const branch2 = new Composite();
+    branch2.add(new Leaf());
+    tree.add(branch1);
+    tree.add(branch2);
+    console.log('Client: Now I\'ve got a composite tree:');
+    return tree;
+}
+
 clientCode(new ConcreteCreator1());
 clientAbstractFactory(new ConcreteFactory1());
 clientBuilder(new Director);
@@ -96,3 +116,5 @@ clientSingleton();
 clientAdapter(new Target);
 clientAdapter(new Adapter(new Adaptee));
 clienteBridge(new Abstraction(new ConcreteImplementationA()));
+clientComposite(new Leaf);
+clientComposite(clientCompositeBranch());
